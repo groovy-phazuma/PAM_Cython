@@ -14,16 +14,16 @@ import itertools
 import numpy as np
 from scipy import special
 
-from pam_dev import vocabulary
-from pam_dev import utils
-from pam_dev import _pam
+from pam_cython import vocabulary
+from pam_cython import utils
+from pam_cython import _pam
 
 from pathlib import Path
 BASE_DIR = Path(__file__).parent
 print(BASE_DIR)
-print("!! PAM Decovnolution Developing now!!")
+print("!! Pachinko Allocation Model!!")
 
-class PAMDeconv():
+class PAM():
     """
     Pachinko Allocation Model using Gibbs sampling
     """
@@ -68,12 +68,12 @@ class PAMDeconv():
         freq_df : DataFrame
             samples in row and genes in column. Gene expression level is contained in int type
         
-                    MBP  PTGDS  ...  PPIC  LOX
-        tissue: 1    8      7  ...     4    4
-        tissue: 2    8      7  ...     4    4
-        tissue: 3    8      7  ...     4    4
-        tissue: 4    6      5  ...     3    3
-        tissue: 5    6      5  ...     3    3
+                    word1  word2  ...  word49  word50
+        sample: 1    8      7     ...     4     4
+        sample: 2    8      7     ...     4     4
+        sample: 3    8      7     ...     4     4
+        sample: 4    6      5     ...     3     3
+        sample: 5    6      5     ...     3     3
         """
         freq_df = freq_df.astype(int)
         
