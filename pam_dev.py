@@ -20,17 +20,16 @@ from pam_cython import pam
 # %% PAM
 n_samples = 100
 n_features = 50
-X, _ = make_multilabel_classification(random_state=0,n_samples=n_samples,n_features=n_features, n_classes=5)
+X, _ = make_multilabel_classification(random_state=0,n_samples=n_samples,n_features=n_features, n_classes=10)
 X_df = pd.DataFrame(X,index=['sample_{}'.format(i) for i in range(n_samples)],columns=['word_{}'.format(i) for i in range(n_features)])
 sns.clustermap(X_df)
 
 # %%
-dat = pam.PAM(S=2,K=3,alpha0=0.01,alpha1=0.01,beta=0.1,random_state=123)
+dat = pam.PAM(S=2,K=5,alpha0=0.01,alpha1=0.01,beta=0.1,random_state=123)
 dat.freq_df2bw(freq_df=X_df)
-dat.set_params(seed_topics=seed_topics,initial_conf=1.0)
+dat.set_params(seed_topics={},initial_conf=1.0)
+dat.inference()
 
-# %% ordinal LDA
-X, _ = make_multilabel_classification(random_state=0,n_samples=200,n_features=100,n_classes=10)
-lda = LatentDirichletAllocation(n_components=5,random_state=0)
-lda.fit(X)
-lda.transform(X[-2:])
+res0 = pd.DataFrame(dat.get_theta0(),index=X_df.index)
+res1 = pd.DataFrame(dat.get_theta1(),index=X_df.index)
+
