@@ -24,7 +24,6 @@ X, _ = make_multilabel_classification(random_state=0,n_samples=n_samples,n_featu
 X_df = pd.DataFrame(X,index=['sample_{}'.format(i) for i in range(n_samples)],columns=['word_{}'.format(i) for i in range(n_features)])
 sns.clustermap(X_df)
 
-# %%
 dat = pam.PAM(S=2,K=5,alpha0=0.01,alpha1=0.01,beta=0.1,random_state=123)
 dat.freq_df2bw(freq_df=X_df)
 dat.set_params(seed_topics={},initial_conf=1.0)
@@ -32,4 +31,13 @@ dat.inference()
 
 res0 = pd.DataFrame(dat.get_theta0(),index=X_df.index)
 res1 = pd.DataFrame(dat.get_theta1(),index=X_df.index)
+
+# %%
+import lda
+import lda.datasets
+
+X = lda.datasets.load_reuters()
+vocab = lda.datasets.load_reuters_vocab()
+titles = lda.datasets.load_reuters_titles()
+X.shape
 
