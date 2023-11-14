@@ -211,8 +211,9 @@ class PAM():
 
     # obtain word dist
     def get_phi(self):
-        if self.phi == None:
+        if self.phi is None:
             self.cal_phi()
+
         return self.phi
 
     # calculate upper topic distribution
@@ -223,7 +224,7 @@ class PAM():
 
     # obtain upper topic dist
     def get_theta0(self):
-        if self.theta0 == None:
+        if self.theta0 is None:
             self.cal_theta0()
         return self.theta0
     
@@ -237,7 +238,7 @@ class PAM():
     
     # obtain lower topic dist
     def get_theta1(self):
-        if self.theta1 == None:
+        if self.theta1 is None:
             self.cal_theta1()
         return self.theta1
 
