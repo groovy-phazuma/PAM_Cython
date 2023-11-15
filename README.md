@@ -13,7 +13,7 @@ python setup.py build_ext --inplace
 ```
 ※ If an error ```'gcc' failed: No such file or directory``` appears, perform  ```sudo apt-get install gcc```.
 
-## Getting started
+## Getting Started
 ```
 >>> import numpy as np
 >>> import lda
@@ -51,6 +51,12 @@ Topic 2	  0.006742	0.008021	0.004739	0.003015	0.004016	0.002681   ...
 Topic 3	  0.005730	0.007356	0.002590	0.004272	0.004160	0.003319   ...
 Topic 4	  0.009583	0.005709	0.005025	0.005880	0.003031	0.003829   ...
 ```
+
+## Run Time Comparison
+The implementation using Cython achieved a speedup of about 10 times.
+| PAM_Cython | PAM_Python | 
+| ---------- | ---------- | 
+| 8.90 sec   | 82.86 sec  | 
 
 ## Dependency
 - Python = 3.8
