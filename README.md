@@ -1,8 +1,8 @@
 # PAM_Cython
-Pachinko Allocation Model (PAM)
+Pachinko Allocation Model (PAM) with Cython
 - Upper topic distribution $θ_1$ for S topics.
-- Lower topic distribution $θ_2$ for K topics.
-- Upper topic $z_1$ and lower topic $z_2$. Infer z using Cython.
+- Sub topic distribution $θ_2$ for K topics.
+- Upper topic $z_1$ and sub topic $z_2$. Infer z using Cython.
 
 ## Setup
 Build for Cython file.
